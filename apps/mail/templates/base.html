@@ -1,0 +1,89 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>OpenDrill</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .logo {
+            width: 100px;
+        }
+    </style>
+
+    {% block styles %}
+
+    {% endblock styles %}
+
+<body >
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-md-2">
+
+            <ul class="nav nav-pills nav-stacked">
+                <li>
+                    <img class="logo" src="{{ STATIC_URL }}img/logo.jpg">
+                </li>
+                <li>
+                    <a href="">
+                        Configuraciones
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url "campaign_list_view" %}">
+                        Campañas
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url "template_list_view" %}">
+                        Plantillas
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url "list_view" %}">
+                        Listas
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Reportes
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Programar
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-12 col-md-10">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    <a class="close" data-dismiss="alert" href="#">×</a>
+                    <p>{% autoescape off %}{{ message }}{% endautoescape %}</p>
+                </div>
+            {% endfor %}
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+
+
+{% block script_bottom %}
+
+
+{% endblock %}
+</body>
+</html>

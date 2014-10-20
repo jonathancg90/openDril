@@ -4,7 +4,7 @@ from django.conf import settings
 
 urlpatterns = patterns('',
 
-    url(r'^', include('mail.urls')),
+    url(r'^', include('apps.mail.urls')),
 )
 urlpatterns += staticfiles_urlpatterns()
 if settings.DEBUG:
