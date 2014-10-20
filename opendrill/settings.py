@@ -75,9 +75,13 @@ USE_TZ = True
 STATIC_ROOT = '/static/'
 STATIC_URL = '/static/'
 
+# STATICFILES_DIRS = (
+#     join(ROOT_PATH, 'static'),
+#     join(ROOT_PATH, 'media')
+# )
+
 STATICFILES_DIRS = (
-    join(ROOT_PATH, 'static'),
-    join(ROOT_PATH, 'media')
+    os.path.join(BASE_DIR, 'static'),
 )
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -85,8 +89,20 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 MANDRILL_API_KEY = "PJInNsWGJMsrdyzcbdLtJA"
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 
-
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 
 # Parse database configuration from $DATABASE_URL
 #import dj_database_url
 #DATABASES['default'] = dj_database_url.config()
+
+
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# STATIC_ROOT = 'staticfiles'
+# STATIC_URL = '/static/'
+#
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )

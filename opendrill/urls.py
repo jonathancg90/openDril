@@ -1,11 +1,12 @@
 from django.conf.urls import patterns, include, url
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 
 urlpatterns = patterns('',
 
     url(r'^', include('mail.urls')),
 )
-
+urlpatterns += staticfiles_urlpatterns()
 if settings.DEBUG:
     # static files (images, css, javascript, etc.)
     urlpatterns += patterns('',
