@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block styles %}
+    <style>
+        .button-header {
+            float: right;
+        }
+        .header-title {
+            width: 50%;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <div class="tools">
+            <a href="{% url "campaign_create_view" %}" class="btn btn-success button-header">
+                <i class="icon-plus icon-white"></i>Nueva campaña</a>
+        </div>
+        <h1 class="header-title">Campañas</h1>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Asunto</th>
+            <th>Listas</th>
+            <th>Plantilla</th>
+            <th>Opciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for campaign in object_list %}
+            <tr>
+                <td>{{ campaign.name }}</td>
+                <td>{{ campaign.subject }}</td>
+                <td>
+                    {% for list in campaign.list.all %}
+                        {{ list.name }} |
+                    {% endfor %}
+                </td>
+                <td>{{ campaign.template.name }}</td>
+{#                <td>{{ campaign.created|date:"d/m/Y" }}</td>#}
+                <td>
+                    <a class="btn btn-info" href="{% url "campaign_detail_list_view" campaign.pk %}">Detalles</a> |
+                    {% if campaign.status != 2 %}
+                        <a class="btn btn-primary" href="{% url "campaign_update_view" campaign.pk %}">Editar</a> |
+                    {% endif %}
+                    <a class="btn btn-danger deletePermission" data-toggle="modal" data-target="#modalDelete" data-id="{{ campaign.id }}">Eliminar</a> |
+                    {% if campaign.status != 2 %}
+                        <a class="btn btn-success" href="{% url "send_messages_view" campaign.pk %}">Enviar</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Eliminar Campaña</h4>
+                </div>
+                <div class="modal-body">
+                    Estas seguro de eliminar esta campaña ?
+                </div>
+                <div class="modal-footer">
+                    <form method="post" action="{% url "campaign_delete_view" %}">
+                        <input type="hidden" id="deleteGroup" name="deleteGroup"/>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block script_bottom %}
+    <script>
+        $(document).on('ready', function(){
+            $('.deletePermission').on('click', function(){
+                var groupId = $(this).data('id');
+                $('#deleteGroup').val(groupId);
+            })
+        });
+
+    </script>
+{% endblock %}

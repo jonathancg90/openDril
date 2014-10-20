@@ -1,0 +1,71 @@
+# -*- coding: utf-8 -*-
+from django.shortcuts import redirect
+from django.views.decorators.csrf import csrf_exempt
+from django.core.urlresolvers import reverse_lazy
+from django.core.urlresolvers import reverse
+from django.views.generic import CreateView
+from django.views.generic import UpdateView
+from django.views.generic import ListView
+from django.views.generic import View
+
+from mail.forms.ListDetail import ListDetailCreateForm
+from mail.models.ListDetail import ListDetail
+from mail.models.List import List
+
+
+class ListDetailView(ListView):
+    model = ListDetail
+    template_name = 'list_detail/list.html'
+
+    def get_queryset(self):
+        qs = super(ListDetailView, self).get_queryset()
+        qs = qs.filter(list_id=self.kwargs.get('pk'))
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(ListDetailView, self).get_context_data(**kwargs)
+        context['list'] = List.objects.get(pk=self.kwargs.get('pk'))
+        return context
+
+
+class ListDetailCreateView(CreateView):
+    model = ListDetail
+    form_class = ListDetailCreateForm
+    template_name = 'list_detail/create.html'
+
+    def get_success_url(self):
+        return reverse('list_detail_view', kwargs={'pk': self.kwargs.get('list')})
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.list = List.objects.get(pk=self.kwargs.get('list'))
+        self.object.save()
+        return super(ListDetailCreateView, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(ListDetailCreateView, self).get_context_data(**kwargs)
+        context['list'] = List.objects.get(pk=self.kwargs.get('list'))
+        return context
+
+
+class ListDetailUpdateView(UpdateView):
+    model = ListDetail
+    form_class = ListDetailCreateForm
+    template_name = 'list_detail/edit.html'
+
+    def get_success_url(self):
+        return reverse('list_detail_view', kwargs={'pk':  self.object.list.id})
+
+
+class ListDetailDeleteView(View):
+
+    @csrf_exempt
+    def dispatch(self, request, *args, **kwargs):
+        return super(ListDetailDeleteView, self).dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        data = request.POST
+        list_detail = ListDetail.objects.get(pk=data.get('deleteGroup'))
+        list_id = list_detail.list.id
+        list_detail.delete()
+        return redirect(reverse('list_detail_view', kwargs={'pk': list_id}))
