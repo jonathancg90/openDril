@@ -12,31 +12,33 @@ from django.views.generic import CreateView
 from django.views.generic import UpdateView
 from django.views.generic import View
 
+from apps.mail.views.commons.view import LoginRequiredMixin
 from apps.mail.models.CampaignDetail import CampaignDetail
 from apps.mail.forms.Campaign import CampaignCreateForm
 from apps.mail.models.Campaign import Campaign
 
 
-class CampaignListView(ListView):
+class CampaignListView(LoginRequiredMixin, ListView):
     model = Campaign
+    paginate_by = settings.PAGINATE_SIZE
     template_name = 'campaign/list.html'
 
 
-class CampaignCreateView(CreateView):
+class CampaignCreateView(LoginRequiredMixin, CreateView):
     model = Campaign
     form_class = CampaignCreateForm
     success_url = reverse_lazy('campaign_list_view')
     template_name = 'campaign/create.html'
 
 
-class CampaignUpdateView(UpdateView):
+class CampaignUpdateView(LoginRequiredMixin, UpdateView):
     model = Campaign
     success_url = reverse_lazy('campaign_list_view')
     form_class = CampaignCreateForm
     template_name = 'campaign/edit.html'
 
 
-class CampaignDeleteView(View):
+class CampaignDeleteView(LoginRequiredMixin, View):
 
     @csrf_exempt
     def dispatch(self, request, *args, **kwargs):
@@ -49,32 +51,55 @@ class CampaignDeleteView(View):
         return redirect(reverse('campaign_list_view'))
 
 
-class CampaignDetailListView(TemplateView):
+class CampaignDetailListView(LoginRequiredMixin, TemplateView):
     model = CampaignDetail
     template_name = 'campaign/detail.html'
-    MESSAGE_WARNING_MESSAGE = 'Envio de mensajes en proceso ...'
+    MESSAGE_WARNING_MESSAGE = 'La informacion se actualizara en algunos minutos'
+    CAMPAIGN_WARNING_MESSAGE = 'Campaña invalida'
 
     def get_queryset(self):
         data = []
-        mandrill_client = mandrill.Mandrill(settings.MANDRILL_API_KEY)
-        tags = [self.campaign.subject.replace(" ", "-")]
-        try:
-            results = mandrill_client.messages.search(tags=tags)
-            self.campaign.status = Campaign.STATUS_PUBLISH
-            self.campaign.save()
-            if len(results) == 0:
-                messages.warning(self.request, self.MESSAGE_WARNING_MESSAGE)
-                return data
+        if self.campaign.status == Campaign.STATUS_ACTIVE:
+            for list in self.campaign.list.all():
+                for detail_list in list.list_detail_set.all():
+                    if self.campaign.category == None:
+                        data.append({
+                            'email': detail_list.email,
+                            'state': 'sin enviar',
+                            'opens': 0
+                        })
+                    else:
+                        if detail_list.category == self.campaign.category:
+                            data.append({
+                                'email': detail_list.email,
+                                'state': 'sin enviar',
+                                'opens': 0
+                            })
+            return data
+        elif self.campaign.status == Campaign.STATUS_SEND:
+            mandrill_client = mandrill.Mandrill(settings.MANDRILL_API_KEY)
+            tag = '%s-%s' %(str(self.campaign.id),self.campaign.subject.replace(" ", "-"))
+            tags = [tag]
+            try:
+                results = mandrill_client.messages.search(tags=tags)
+                self.campaign.status = Campaign.STATUS_SEND
+                self.campaign.save()
+                if len(results) == 0:
+                    messages.warning(self.request, self.MESSAGE_WARNING_MESSAGE)
+                    return data
 
-            for result in results:
-                data.append({
-                    'email': result.get('email'),
-                    'state': result.get('state'),
-                    'opens': result.get('opens')
-                })
-        except:
-            messages.warning(self.request, self.MESSAGE_WARNING_MESSAGE)
-        return data
+                for result in results:
+                    data.append({
+                        'email': result.get('email'),
+                        'state': result.get('state'),
+                        'opens': result.get('opens')
+                    })
+            except:
+                messages.warning(self.request, self.MESSAGE_WARNING_MESSAGE)
+            return data
+        else:
+            messages.warning(self.request, self.CAMPAIGN_WARNING_MESSAGE)
+            return data
 
     def get_context_data(self, **kwargs):
         context = super(CampaignDetailListView, self).get_context_data(**kwargs)

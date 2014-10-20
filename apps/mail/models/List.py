@@ -13,8 +13,19 @@ class List(models.Model):
     )
 
     name = models.CharField(
-        max_length=45
+        max_length=45,
+        verbose_name='Nombre de la lista',
     )
+
+    email = models.EmailField(
+        verbose_name='Email para el envio',
+    )
+
+    sender = models.CharField(
+        max_length=45,
+        verbose_name='Nombre remitente',
+    )
+
     status = models.SmallIntegerField(
         choices=CHOICE_STATUS,
         default=STATUS_ACTIVE

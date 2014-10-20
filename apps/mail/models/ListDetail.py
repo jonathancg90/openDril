@@ -21,6 +21,14 @@ class ListDetail(models.Model):
         max_length=45,
     )
 
+    category = models.ForeignKey(
+        'Category',
+        verbose_name='categoria',
+        null=True,
+        blank=True,
+        related_name='list_detail_set',
+    )
+
     email = models.EmailField(
         max_length=45,
     )

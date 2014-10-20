@@ -13,6 +13,14 @@
         .logo {
             width: 100px;
         }
+        .djmessage {
+            float: right;
+            margin-top: 5%;
+        }
+        .content-message {
+            position: absolute;
+            z-index: 999;
+        }
     </style>
 
     {% block styles %}
@@ -28,10 +36,16 @@
                 <li>
                     <img class="logo" src="{{ STATIC_URL }}img/logo.jpg">
                 </li>
-                <li>
-                    <a href="">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         Configuraciones
+                        <span class="caret"></span>
                     </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="{% url "category_list_view" %}">Categorias</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a href="{% url "campaign_list_view" %}">
@@ -58,15 +72,22 @@
                         Programar
                     </a>
                 </li>
+                <li>
+                    <a href="{% url 'logout' %}">
+                        Salir
+                    </a>
+                </li>
             </ul>
         </div>
+        <div class="col-xs-12 col-md-11 content-message">
+        {% for message in messages %}
+            <div class="djmessage alert alert-{{ message.tags }}">
+                <a class="close" data-dismiss="alert" href="#">×</a>
+                <p>{% autoescape off %}{{ message }}{% endautoescape %}</p>
+            </div>
+        {% endfor %}
+        </div>
         <div class="col-xs-12 col-md-10">
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
-                    <a class="close" data-dismiss="alert" href="#">×</a>
-                    <p>{% autoescape off %}{{ message }}{% endautoescape %}</p>
-                </div>
-            {% endfor %}
             {% block content %}
 
             {% endblock content %}

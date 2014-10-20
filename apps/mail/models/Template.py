@@ -13,14 +13,18 @@ class Template(models.Model):
 
     type = models.SmallIntegerField(
         choices=CHOICE_TYPES,
-        default=TYPE_TEXT
+        default=TYPE_TEXT,
+        verbose_name='Tipo',
     )
 
     name = models.CharField(
         max_length=45,
+        verbose_name='Nombre',
     )
 
-    content = models.TextField()
+    content = models.TextField(
+        verbose_name='Cuerpo del mensaje',
+    )
 
     created = models.DateTimeField(
         auto_now_add=True,

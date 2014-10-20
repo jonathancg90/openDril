@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.conf import settings
 from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.core.urlresolvers import reverse
@@ -7,13 +8,15 @@ from django.views.generic import UpdateView
 from django.views.generic import ListView
 from django.views.generic import View
 
+from apps.mail.views.commons.view import LoginRequiredMixin
 from apps.mail.forms.ListDetail import ListDetailCreateForm
 from apps.mail.models.ListDetail import ListDetail
 from apps.mail.models.List import List
 
 
-class ListDetailView(ListView):
+class ListDetailView(LoginRequiredMixin, ListView):
     model = ListDetail
+    paginate_by = settings.PAGINATE_SIZE
     template_name = 'list_detail/list.html'
 
     def get_queryset(self):
@@ -27,7 +30,7 @@ class ListDetailView(ListView):
         return context
 
 
-class ListDetailCreateView(CreateView):
+class ListDetailCreateView(LoginRequiredMixin, CreateView):
     model = ListDetail
     form_class = ListDetailCreateForm
     template_name = 'list_detail/create.html'
@@ -47,7 +50,7 @@ class ListDetailCreateView(CreateView):
         return context
 
 
-class ListDetailUpdateView(UpdateView):
+class ListDetailUpdateView(LoginRequiredMixin, UpdateView):
     model = ListDetail
     form_class = ListDetailCreateForm
     template_name = 'list_detail/edit.html'
@@ -56,7 +59,7 @@ class ListDetailUpdateView(UpdateView):
         return reverse('list_detail_view', kwargs={'pk':  self.object.list.id})
 
 
-class ListDetailDeleteView(View):
+class ListDetailDeleteView(LoginRequiredMixin, View):
 
     @csrf_exempt
     def dispatch(self, request, *args, **kwargs):

@@ -24,6 +24,7 @@
         <tr>
             <th>Nombre</th>
             <th>Correo</th>
+            <th>Categoria</th>
             <th>Opciones</th>
         </tr>
         </thead>
@@ -32,6 +33,7 @@
             <tr>
                 <td>{{ list_detail.name }}</td>
                 <td>{{ list_detail.email }}</td>
+                <td>{{ list_detail.category }}</td>
                 <td>
                     <a class="btn btn-info" href="{% url "list_detail_update_view" list_detail.pk %}">Editar</a> |
                     <a class="btn btn-danger deletePermission" data-toggle="modal" data-target="#modalDelete" data-id="{{ list_detail.id }}">Eliminar</a> |

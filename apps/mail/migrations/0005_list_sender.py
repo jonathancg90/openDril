@@ -7,14 +7,14 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mail', '0005_auto_20141019_0321'),
+        ('mail', '0004_auto_20141020_1937'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='template',
-            name='subject',
-            field=models.CharField(default=1, max_length=50),
+            model_name='list',
+            name='sender',
+            field=models.CharField(default=1, max_length=45, verbose_name=b'Nombre remitente'),
             preserve_default=False,
         ),
     ]
