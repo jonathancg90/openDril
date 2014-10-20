@@ -1,0 +1,7 @@
+Django==1.7
+django-crispy-forms==1.4.0
+djrill==1.1.1
+docopt==0.4.0
+mandrill==1.0.57
+requests==2.4.1
+wsgiref==0.1.2
