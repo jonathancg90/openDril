@@ -118,8 +118,8 @@
       <file leaf-file-name="Procfile" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="90">
-              <caret line="0" column="38" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
+              <caret line="0" column="41" selection-start-line="0" selection-start-column="41" selection-end-line="0" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -138,8 +138,8 @@
       <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/opendrill/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.0" vertical-offset="830" max-vertical-offset="1455">
-              <caret line="90" column="1" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="1" />
+            <state vertical-scroll-proportion="-8.0" vertical-offset="467" max-vertical-offset="1455">
+              <caret line="45" column="16" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="16" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -151,10 +151,8 @@
         <entry file="file://$PROJECT_DIR$/opendrill/wsgi.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.23041475" vertical-offset="0" max-vertical-offset="651">
-              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-              <folding>
-                <element signature="e#403#452#0" expanded="true" />
-              </folding>
+              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -213,10 +211,10 @@
         <option value="$PROJECT_DIR$/mail/templates/base.html" />
         <option value="$PROJECT_DIR$/mail/views/Campaign/campaign.py" />
         <option value="$PROJECT_DIR$/mail/views/Campaign/send.py" />
-        <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/opendrill/settings.py" />
         <option value="$PROJECT_DIR$/opendrill/wsgi.py" />
+        <option value="$PROJECT_DIR$/Procfile" />
+        <option value="$PROJECT_DIR$/opendrill/settings.py" />
       </list>
     </option>
   </component>
@@ -767,12 +765,12 @@
       <workItem from="1412137586792" duration="143000" />
       <workItem from="1413515351242" duration="5994000" />
       <workItem from="1413521974667" duration="23600000" />
-      <workItem from="1413764811558" duration="804000" />
+      <workItem from="1413764811558" duration="1202000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32845000" />
+    <option name="totallyTimeSpent" value="33243000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="774" extended-state="6" />
@@ -1158,14 +1156,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="626">
-          <caret line="0" column="38" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="651">
@@ -1182,10 +1172,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="651">
+          <caret line="0" column="41" selection-start-line="0" selection-start-column="41" selection-end-line="0" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/opendrill/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.0" vertical-offset="830" max-vertical-offset="1455">
-          <caret line="90" column="1" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="1" />
+        <state vertical-scroll-proportion="-8.0" vertical-offset="467" max-vertical-offset="1455">
+          <caret line="45" column="16" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="16" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
@@ -1195,10 +1193,8 @@
     <entry file="file://$PROJECT_DIR$/opendrill/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23041475" vertical-offset="0" max-vertical-offset="651">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-          <folding>
-            <element signature="e#403#452#0" expanded="true" />
-          </folding>
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
