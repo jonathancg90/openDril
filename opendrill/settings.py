@@ -1,4 +1,5 @@
 from os.path import join, dirname, realpath
+import dj_database_url
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -13,8 +14,9 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
@@ -70,7 +72,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
@@ -82,3 +84,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MANDRILL_API_KEY = "PJInNsWGJMsrdyzcbdLtJA"
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+
+
+
+# Parse database configuration from $DATABASE_URL
+#import dj_database_url
+#DATABASES['default'] = dj_database_url.config()
