@@ -17,6 +17,12 @@ class Category(models.Model):
         verbose_name='Nombre',
     )
 
+    list = models.ForeignKey(
+        'List',
+        verbose_name='Lista',
+        related_name='category_set',
+    )
+
     status = models.SmallIntegerField(
         choices=CHOICE_STATUS,
         default=STATUS_ACTIVE

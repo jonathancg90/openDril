@@ -3,8 +3,17 @@
 
 {% block content %}
     <div class="page-header">
-        <h1 class="header-title">campaña &raquo {{ campaign.name }} |
-            {{ campaign.category.name }}
+        <h1 class="header-title">campaña &raquo {{ campaign.name }}
+            <small>
+            {% for campaign_detail in campaign.campaign_filter_detail_set.all %}
+                | {{ campaign_detail.list.name }} :
+                {% if campaign_detail.category == None %}
+                    Todos
+                {% else %}
+                    {{ campaign_detail.category.name }}
+                {% endif %}
+            {% endfor %}
+            </small>
         </h1>
     </div>
     <table class="table table-hover">
@@ -12,6 +21,7 @@
         <tr>
             <th>Correo</th>
             <th>Abierto</th>
+            <th>clicks</th>
             <th>Estado</th>
         </tr>
         </thead>
@@ -20,6 +30,7 @@
             <tr>
                 <td>{{ detail.email }}</td>
                 <td>{{ detail.opens }}</td>
+                <td>{{ detail.clicks }}</td>
                 <td>{{ detail.state }}</td>
                 <td><a>Reenviar</a></td>
              </tr>

@@ -3,7 +3,8 @@ from django.conf.urls import patterns, url
 from apps.mail.views.Campaign.send import SendMessage
 from apps.mail.views.Campaign.campaign import CampaignListView, \
     CampaignCreateView, CampaignUpdateView, CampaignDeleteView, \
-    CampaignDetailListView
+    CampaignDetailListView, CampaignListDetailView, \
+    CampaignListDetailCreateView, CampaignListDetailDeleteView
 
 urlpatterns = patterns('',
                        url(r'^list/$',
@@ -27,4 +28,17 @@ urlpatterns = patterns('',
                        url(r'^send/(?P<campaign>\d+)/$',
                            SendMessage.as_view(),
                            name='send_messages_view'),
+
+                       url(r'^create-filter/$',
+                           CampaignListDetailCreateView.as_view(),
+                           name='campaign_filter_create_view'),
+
+                       url(r'^delete-filter/$',
+                           CampaignListDetailDeleteView.as_view(),
+                           name='campaign_filter_delete_view'),
+
+                       url(r'^get-filters/(?P<campaign>[^/]+)/$',
+                           CampaignListDetailView.as_view(),
+                           name='campaign_filter_view'),
+
                        )

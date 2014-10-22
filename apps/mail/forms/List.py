@@ -1,5 +1,6 @@
 from django.forms import ModelForm
 from crispy_forms.helper import FormHelper
+from apps.mail.models.Category import Category
 
 from apps.mail.models.List import List
 

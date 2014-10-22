@@ -11,6 +11,7 @@ from django.views.generic import View
 from apps.mail.views.commons.view import LoginRequiredMixin
 from apps.mail.forms.ListDetail import ListDetailCreateForm
 from apps.mail.models.ListDetail import ListDetail
+from apps.mail.models.Category import Category
 from apps.mail.models.List import List
 
 
@@ -44,6 +45,13 @@ class ListDetailCreateView(LoginRequiredMixin, CreateView):
         self.object.save()
         return super(ListDetailCreateView, self).form_valid(form)
 
+    def get_form(self, form_class):
+        list = List.objects.get(pk=self.kwargs.get('list'))
+        form = super(ListDetailCreateView, self).get_form(form_class)
+        if self.request.POST.get('category') is None:
+            form.set_category(list)
+        return form
+
     def get_context_data(self, **kwargs):
         context = super(ListDetailCreateView, self).get_context_data(**kwargs)
         context['list'] = List.objects.get(pk=self.kwargs.get('list'))
@@ -54,6 +62,15 @@ class ListDetailUpdateView(LoginRequiredMixin, UpdateView):
     model = ListDetail
     form_class = ListDetailCreateForm
     template_name = 'list_detail/edit.html'
+
+    def get_form(self, form_class):
+        form = super(ListDetailUpdateView, self).get_form(form_class)
+        if self.request.POST.get('category') is None:
+            if self.object.category is not None:
+                form.set_category_update(self.object.list, self.object.category)
+            else:
+                form.set_category(self.object.list)
+        return form
 
     def get_success_url(self):
         return reverse('list_detail_view', kwargs={'pk':  self.object.list.id})

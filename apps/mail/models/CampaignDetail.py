@@ -4,6 +4,8 @@ from django.db import models
 
 class CampaignDetail(models.Model):
 
+    STATUS_ERROR = 5
+    STATUS_WAIT = 4
     STATUS_INVALID = 3
     STATUS_OPEN = 2
     STATUS_SENT = 1
@@ -11,7 +13,11 @@ class CampaignDetail(models.Model):
     CHOICE_STATUS = (
         (STATUS_REJECTED,'rechazado'),
         (STATUS_OPEN,'abierto'),
-        (STATUS_SENT,'enviado')
+        (STATUS_INVALID,'invalido'),
+
+        (STATUS_ERROR,'error'),  #Se produjo un error en el envio
+        (STATUS_SENT,'enviado'),  #Mensaje enviado por el cron
+        (STATUS_WAIT,'en espera') #Mensaje sin enviar espernado al cron
     )
 
     campaign = models.ForeignKey(
@@ -31,6 +37,24 @@ class CampaignDetail(models.Model):
     mandrill_id = models.CharField(
         max_length=100,
     )
+
+    email_sender = models.EmailField(
+        max_length=45,
+    )
+
+    name_sender = models.CharField(
+        max_length=45,
+    )
+
+    subject = models.CharField(
+        max_length=45,
+    )
+
+    tag = models.CharField(
+        max_length=50,
+    )
+
+    content = models.TextField()
 
     status = models.SmallIntegerField(
         choices=CHOICE_STATUS,

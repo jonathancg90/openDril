@@ -1,12 +1,13 @@
-from apps.mail.models import CampaignDetail
-from apps.mail.models import List
-from apps.mail.models import ListDetail
-from apps.mail.models import Template
-from apps.mail.models import Campaign
-from apps.mail.models import Category
+from apps.mail.models.CampaignDetail import CampaignDetail
+from apps.mail.models.List import List
+from apps.mail.models.ListDetail import ListDetail
+from apps.mail.models.Template import Template
+from apps.mail.models.Campaign import Campaign, CampaignFilterDetail
+from apps.mail.models.Category import Category
 
 
 __all__ = [
+    'CampaignFilterDetail',
     'Category',
     'Template',
     'CampaignDetail',

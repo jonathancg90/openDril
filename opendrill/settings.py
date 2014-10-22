@@ -31,6 +31,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'apps.mail',
     'crispy_forms',
+    'djcelery',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -51,12 +52,24 @@ WSGI_APPLICATION = 'opendrill.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'opendrill',
+        'USER': 'open',
+        'PASSWORD': 'Nexonet2014$',
+        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '',                      # Set to empty string for default.
     }
 }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -77,10 +90,6 @@ USE_TZ = True
 STATIC_ROOT = '/static/'
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = (
-#     join(ROOT_PATH, 'static'),
-#     join(ROOT_PATH, 'media')
-# )
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
@@ -96,15 +105,33 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-# Parse database configuration from $DATABASE_URL
-#import dj_database_url
-#DATABASES['default'] = dj_database_url.config()
+#celery
 
-
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# STATIC_ROOT = 'staticfiles'
-# STATIC_URL = '/static/'
+# import djcelery
+# djcelery.setup_loader()
 #
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
+# BROKER_URL = 'redis://localhost:6379/0'
+# CELERY_IMPORTS = ('apps.mail.tasks',)
+# CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
+
+try:
+    import djcelery
+    djcelery.setup_loader()
+
+    BROKER_URL = 'redis://localhost:6379/0'
+
+    CELERYD_LOG_COLOR = True ### turns the output colors to black.
+    CELERY_IMPORTS = ('apps.mail.tasks') ### specify the route of the tasks file.
+    CELERY_ALWAYS_EAGER = True ### True for development mode, so the process are executed locally.
+    CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
+
+    from local_settings import *
+
+except ImportError:
+    pass
+
+try:
+    import sys
+    TESTING = 'test' == sys.argv[1]
+except IndexError:
+    TESTING = False
