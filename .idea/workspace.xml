@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43810045-2b35-4da4-a0c3-9e177719c9bd" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0002_auto_20141020_1607.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0003_auto_20141020_1616.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0004_auto_20141020_1937.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0005_list_sender.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0006_auto_20141020_2110.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0007_auto_20141021_1453.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0008_auto_20141021_1529.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0009_remove_campaign_multiple_email.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0010_campaignfilterdetail.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0011_auto_20141021_1723.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0012_auto_20141021_1756.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/opendrill/settings.py" afterPath="$PROJECT_DIR$/opendrill/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="opendrill.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,20 +48,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/opendrill/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.555555" vertical-offset="939" max-vertical-offset="2310">
-              <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.73214287" vertical-offset="849" max-vertical-offset="2310">
+              <caret line="75" column="0" selection-start-line="75" selection-start-column="2" selection-end-line="84" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="requirements.txt" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="requirements.txt" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45454547" vertical-offset="0" max-vertical-offset="363">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
               <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="12" />
               <folding />
             </state>
@@ -160,8 +146,8 @@
         <option value="$PROJECT_DIR$/apps/mail/templates/campaign/detail.html" />
         <option value="$PROJECT_DIR$/apps/mail/views/Campaign/campaign.py" />
         <option value="$PROJECT_DIR$/apps/mail/tasks/save_messages.py" />
-        <option value="$PROJECT_DIR$/opendrill/settings.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/opendrill/settings.py" />
       </list>
     </option>
   </component>
@@ -752,12 +738,12 @@
       <updated>1413817876372</updated>
       <workItem from="1413817888374" duration="20806000" />
       <workItem from="1413902462871" duration="16308000" />
-      <workItem from="1413988207503" duration="7137000" />
+      <workItem from="1413988207503" duration="7394000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44251000" />
+    <option name="totallyTimeSpent" value="44508000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -1197,18 +1183,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/opendrill/settings.py">
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.555555" vertical-offset="939" max-vertical-offset="2310">
-          <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
+    <entry file="file://$PROJECT_DIR$/opendrill/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45454547" vertical-offset="0" max-vertical-offset="363">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.73214287" vertical-offset="849" max-vertical-offset="2310">
+          <caret line="75" column="0" selection-start-line="75" selection-start-column="2" selection-end-line="84" selection-end-column="3" />
           <folding />
         </state>
       </provider>

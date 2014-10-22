@@ -61,28 +61,28 @@ WSGI_APPLICATION = 'opendrill.wsgi.application'
 
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'opendrill',
-#         'USER': 'open',
-#         'PASSWORD': 'Nexonet2014$',
-#         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-#         'PORT': '',                      # Set to empty string for default.
-#     }
-# }
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'opendrill',
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'USER': 'open',
+        'PASSWORD': 'Nexonet2014$',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'opendrill',
+#         'USER': 'root',
+#         'PASSWORD': 'root',
+#         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+#         'PORT': '',                      # Set to empty string for default.
+#     }
+# }
 
 
 # Internationalization
