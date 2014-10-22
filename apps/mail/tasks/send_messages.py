@@ -108,7 +108,7 @@ class SendMessagesMandrill(PeriodicTask):
             campaign.save()
             return
         for campaign_detail in campaign_details:
-            info = mandrill_client.users.info()
+            # info = mandrill_client.users.info()
             try:
                 message = {
                     'from_email': campaign_detail.email_sender,

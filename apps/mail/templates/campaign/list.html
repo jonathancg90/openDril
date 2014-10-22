@@ -164,7 +164,7 @@
 
         $('#modalFilter').on('hidden.bs.modal', function (e) {
             location.reload();
-        });
+        })
 
         angular.module('campaignApp').value("factoryUrl", {
             campaignFilterListDetail: '{% url "campaign_filter_view" campaign='campaign_pk'  %}',

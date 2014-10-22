@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-from apps.mail.views.Campaign.send import SendMessage
+from apps.mail.views.Campaign.send import SendMessage, SendTestMessage
 from apps.mail.views.Campaign.campaign import CampaignListView, \
     CampaignCreateView, CampaignUpdateView, CampaignDeleteView, \
     CampaignDetailListView, CampaignListDetailView, \
@@ -28,6 +28,10 @@ urlpatterns = patterns('',
                        url(r'^send/(?P<campaign>\d+)/$',
                            SendMessage.as_view(),
                            name='send_messages_view'),
+
+                       url(r'^send-test/(?P<campaign>\d+)/$',
+                           SendTestMessage.as_view(),
+                           name='send_test_message'),
 
                        url(r'^create-filter/$',
                            CampaignListDetailCreateView.as_view(),
