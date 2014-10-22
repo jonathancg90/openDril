@@ -5,33 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43810045-2b35-4da4-a0c3-9e177719c9bd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/mail/tasks/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/angular.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/apps/campaign/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/apps/campaign/controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/apps/commons/request.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/mail/tasks/save_messages.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/apps/mail/tasks/send_messages.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/models/Campaign.py" afterPath="$PROJECT_DIR$/apps/mail/models/Campaign.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/models/CampaignDetail.py" afterPath="$PROJECT_DIR$/apps/mail/models/CampaignDetail.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/models/Category.py" afterPath="$PROJECT_DIR$/apps/mail/models/Category.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/views/DetailList.py" afterPath="$PROJECT_DIR$/apps/mail/views/DetailList.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/forms/List.py" afterPath="$PROJECT_DIR$/apps/mail/forms/List.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/forms/ListDetail.py" afterPath="$PROJECT_DIR$/apps/mail/forms/ListDetail.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/models/__init__.py" afterPath="$PROJECT_DIR$/apps/mail/models/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/templates/base.html" afterPath="$PROJECT_DIR$/apps/mail/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/urls/campaign.py" afterPath="$PROJECT_DIR$/apps/mail/urls/campaign.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/views/Campaign/campaign.py" afterPath="$PROJECT_DIR$/apps/mail/views/Campaign/campaign.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/templates/campaign/detail.html" afterPath="$PROJECT_DIR$/apps/mail/templates/campaign/detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/templates/campaign/list.html" afterPath="$PROJECT_DIR$/apps/mail/templates/campaign/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/templates/category/list.html" afterPath="$PROJECT_DIR$/apps/mail/templates/category/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/templates/list/list.html" afterPath="$PROJECT_DIR$/apps/mail/templates/list/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/templates/list_detail/list.html" afterPath="$PROJECT_DIR$/apps/mail/templates/list_detail/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/templates/template/list.html" afterPath="$PROJECT_DIR$/apps/mail/templates/template/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/views/Campaign/send.py" afterPath="$PROJECT_DIR$/apps/mail/views/Campaign/send.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0001_initial.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0002_auto_20141020_1607.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0003_auto_20141020_1616.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0004_auto_20141020_1937.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0005_list_sender.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0006_auto_20141020_2110.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0007_auto_20141021_1453.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0008_auto_20141021_1529.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0009_remove_campaign_multiple_email.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0010_campaignfilterdetail.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0011_auto_20141021_1723.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/apps/mail/migrations/0012_auto_20141021_1756.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/opendrill/settings.py" afterPath="$PROJECT_DIR$/opendrill/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apps/mail/tests.py" afterPath="$PROJECT_DIR$/apps/mail/tests.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="opendrill.iws" />
@@ -75,21 +62,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/opendrill/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.375" vertical-offset="729" max-vertical-offset="2100">
-              <caret line="59" column="3" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
+            <state vertical-scroll-proportion="-8.555555" vertical-offset="939" max-vertical-offset="2310">
+              <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="requirements.txt" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="requirements.txt" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.45454547" vertical-offset="0" max-vertical-offset="363">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -108,8 +95,8 @@
       <file leaf-file-name="campaign.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/mail/views/Campaign/campaign.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.0370371" vertical-offset="1058" max-vertical-offset="3585">
-              <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+            <state vertical-scroll-proportion="-4.148148" vertical-offset="1058" max-vertical-offset="3585">
+              <caret line="99" column="43" selection-start-line="99" selection-start-column="43" selection-end-line="99" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -128,7 +115,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/apps/mail/views/category.py" />
         <option value="$PROJECT_DIR$/apps/mail/urls/category.py" />
         <option value="$PROJECT_DIR$/apps/mail/templates/category/edit.html" />
@@ -175,6 +161,7 @@
         <option value="$PROJECT_DIR$/apps/mail/views/Campaign/campaign.py" />
         <option value="$PROJECT_DIR$/apps/mail/tasks/save_messages.py" />
         <option value="$PROJECT_DIR$/opendrill/settings.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
       </list>
     </option>
   </component>
@@ -241,7 +228,7 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
+              <option name="myItemId" value="apps" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -255,7 +242,55 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mail" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
               <option name="myItemId" value="opendrill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opendrill" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mail" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opendrill" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opendrill" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mail" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrations" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -717,12 +752,12 @@
       <updated>1413817876372</updated>
       <workItem from="1413817888374" duration="20806000" />
       <workItem from="1413902462871" duration="16308000" />
-      <workItem from="1413988207503" duration="7050000" />
+      <workItem from="1413988207503" duration="7137000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44164000" />
+    <option name="totallyTimeSpent" value="44251000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -1122,34 +1157,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/mail/views/Campaign/campaign.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.0370371" vertical-offset="1058" max-vertical-offset="3585">
-          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/mail/views/Campaign/send.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
           <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/opendrill/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="363">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1170,10 +1181,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/apps/mail/views/Campaign/campaign.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.148148" vertical-offset="1058" max-vertical-offset="3585">
+          <caret line="99" column="43" selection-start-line="99" selection-start-column="43" selection-end-line="99" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/opendrill/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="363">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/opendrill/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.375" vertical-offset="729" max-vertical-offset="2100">
-          <caret line="59" column="3" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
+        <state vertical-scroll-proportion="-8.555555" vertical-offset="939" max-vertical-offset="2310">
+          <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45454547" vertical-offset="0" max-vertical-offset="363">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="12" />
           <folding />
         </state>
       </provider>

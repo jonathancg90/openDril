@@ -9,3 +9,4 @@ mandrill==1.0.57
 requests==2.4.1
 static3==0.5.1
 wsgiref==0.1.2
+MySQl-python==1.2.3
