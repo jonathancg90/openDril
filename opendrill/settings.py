@@ -67,7 +67,7 @@ DATABASES = {
         'NAME': 'opendrill',
         'USER': 'open',
         'PASSWORD': 'Nexonet2014$',
-        'HOST': '69.164.207.187',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
 }
