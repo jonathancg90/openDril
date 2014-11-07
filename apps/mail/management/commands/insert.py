@@ -29,17 +29,17 @@ class Command(BaseCommand):
             #self.insert_mails()
 
     def insert_csv(self):
-        List.objects.all().delete()
-        Category.objects.all().delete()
+        # List.objects.all().delete()
+        # Category.objects.all().delete()
 
         _list = List()
-        _list.name = 'Lista exportada'
-        _list.sender = 'sistemas'
-        _list.email = 'sistemas3@nexonet.net'
+        _list.name = 'Bago'
+        _list.sender = 'Bago'
+        _list.email = 'comunicaciones@bagoperu.com.pe'
         _list.save()
 
         ROOT_PATH = settings.ROOT_PATH
-        file_path = ROOT_PATH + '/apps/mail/management/dbdata/data.csv'
+        file_path = ROOT_PATH + '/apps/mail/management/dbdata/export.csv'
         dataReader = csv.reader(open(file_path), delimiter=',', quotechar='"')
 
         for row in dataReader:
