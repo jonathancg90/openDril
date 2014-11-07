@@ -1,4 +1,5 @@
 import xlrd
+import csv
 from django.conf import settings
 
 from django.core.management.base import BaseCommand
@@ -23,7 +24,42 @@ class Command(BaseCommand):
         entity = args[0]
 
         if entity == 'all':
-            self.insert_mails()
+
+            self.insert_csv()
+            #self.insert_mails()
+
+    def insert_csv(self):
+        List.objects.all().delete()
+        Category.objects.all().delete()
+
+        _list = List()
+        _list.name = 'Lista exportada'
+        _list.sender = 'sistemas'
+        _list.email = 'sistemas3@nexonet.net'
+        _list.save()
+
+        ROOT_PATH = settings.ROOT_PATH
+        file_path = ROOT_PATH + '/apps/mail/management/dbdata/data.csv'
+        dataReader = csv.reader(open(file_path), delimiter=',', quotechar='"')
+
+        for row in dataReader:
+            category_name = row[1]
+            categories = Category.objects.filter(name=category_name)
+            if categories.exists():
+                category = categories.first()
+            else:
+                category = Category()
+                category.name = category_name
+                category.list = _list
+                category.save()
+
+            list_detail = ListDetail()
+            list_detail.list = _list
+            list_detail.email = row[0]
+            list_detail.name = row[0].split('@')[0]
+            list_detail.category = category
+            list_detail.save()
+            print(row[0])
 
     def insert_mails(self):
         List.objects.all().delete()
