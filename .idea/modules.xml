@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/opendrill.iml" filepath="$PROJECT_DIR$/opendrill.iml" />
+      <module fileurl="file://$PROJECT_DIR$/openDril.iml" filepath="$PROJECT_DIR$/openDril.iml" />
     </modules>
   </component>
 </project>
