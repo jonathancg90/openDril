@@ -4,18 +4,6 @@ from django.db import models
 
 class Template(models.Model):
 
-    TYPE_TEXT = 1
-    TYPE_HTML = 2
-    CHOICE_TYPES = (
-        (TYPE_TEXT,'Texto'),
-        (TYPE_HTML,'Html'),
-    )
-
-    type = models.SmallIntegerField(
-        choices=CHOICE_TYPES,
-        default=TYPE_TEXT,
-        verbose_name='Tipo',
-    )
 
     name = models.CharField(
         max_length=45,
