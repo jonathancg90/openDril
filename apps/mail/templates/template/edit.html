@@ -3,6 +3,9 @@
 
 {% block styles %}
 
+    <link href="{{ STATIC_URL }}css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}css/froala_editor.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}css/froala_style.css" rel="stylesheet" type="text/css">
 {% endblock %}
 
 {% block content %}
@@ -22,3 +25,16 @@
 
     </form>
 {% endblock content %}
+
+{% block script_bottom %}
+
+    <script src="{{ STATIC_URL }}js/froala_editor.min.js"></script>
+    <script>
+        $(document).on('ready', function(){
+            $('#id_content').editable({
+                inlineMode: false
+            });
+        });
+    </script>
+
+{% endblock script_bottom %}
