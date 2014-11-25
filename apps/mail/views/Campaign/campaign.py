@@ -36,7 +36,7 @@ class CampaignListView(LoginRequiredMixin, ListView):
 
     def get_list(self):
         data = []
-        lists = List.objects.all()
+        lists = List.objects.filter(status=List.STATUS_ACTIVE)
         for list in lists:
             data.append({
                 'list_id': list.id,
