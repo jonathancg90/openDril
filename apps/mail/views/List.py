@@ -19,6 +19,11 @@ class ListTemplateView(LoginRequiredMixin, ListView):
     paginate_by = settings.PAGINATE_SIZE
     template_name = 'list/list.html'
 
+    def get_queryset(self):
+        qs = super(ListTemplateView, self).get_queryset()
+        qs= qs.filter(status=List.STATUS_ACTIVE)
+        return qs
+
 
 class ListCreateView(LoginRequiredMixin, CreateView):
     model = List

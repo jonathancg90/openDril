@@ -30,7 +30,6 @@ class FacebookTaskTest(TestCase):
         list_detail.save()
 
         template = Template()
-        template.type = Template.TYPE_HTML
         template.name = 'template de prueba'
         template.content = '<h1>Hello World</h1>'
         template.save()
@@ -42,8 +41,6 @@ class FacebookTaskTest(TestCase):
         campaign.status = Campaign.STATUS_PROGRESS
         campaign.save()
 
-        campaign.list.add(list)
-
         campaign_detail = CampaignDetail()
         campaign_detail.campaign = campaign
         campaign_detail.name = list_detail.name
@@ -52,6 +49,7 @@ class FacebookTaskTest(TestCase):
         campaign_detail.name_sender = list.sender
         campaign_detail.subject = campaign.subject
         campaign_detail.tag = '%s-%s' %(str(campaign.id),campaign.subject.replace(" ", "-"))
+        campaign_detail.list_detail = list_detail
         campaign_detail.content = template.content
         campaign_detail.status = CampaignDetail.STATUS_WAIT
         campaign_detail.save()

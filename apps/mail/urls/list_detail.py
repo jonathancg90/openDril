@@ -4,6 +4,7 @@ from apps.mail.views.DetailList import ListDetailView
 from apps.mail.views.DetailList import ListDetailCreateView
 from apps.mail.views.DetailList import ListDetailUpdateView
 from apps.mail.views.DetailList import ListDetailDeleteView
+from apps.mail.views.DetailList import ListDetailUnSubscribeView
 
 
 urlpatterns = patterns('',
@@ -14,10 +15,16 @@ urlpatterns = patterns('',
                        url(r'^create/(?P<list>\d+)/$',
                            ListDetailCreateView.as_view(),
                            name='list_detail_create_view'),
+
                        url(r'^update/(?P<pk>\d+)/$',
                            ListDetailUpdateView.as_view(),
                            name='list_detail_update_view'),
+
                        url(r'^delete/$',
                            ListDetailDeleteView.as_view(),
                            name='list_detail_delete_view'),
+
+                       url(r'^unsubscribe/(?P<pk>\d+)/$',
+                           ListDetailUnSubscribeView.as_view(),
+                           name='list_detail_un_subscribe_view'),
                        )

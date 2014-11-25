@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
+from django.contrib import messages
 from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.core.urlresolvers import reverse
@@ -11,7 +12,7 @@ from django.views.generic import View
 from apps.mail.views.commons.view import LoginRequiredMixin
 from apps.mail.forms.ListDetail import ListDetailCreateForm
 from apps.mail.models.ListDetail import ListDetail
-from apps.mail.models.Category import Category
+from django.views.generic import RedirectView
 from apps.mail.models.List import List
 
 
@@ -23,6 +24,7 @@ class ListDetailView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         qs = super(ListDetailView, self).get_queryset()
         qs = qs.filter(list_id=self.kwargs.get('pk'))
+        qs = qs.filter(status=ListDetail.STATUS_ACTIVE)
         return qs
 
     def get_context_data(self, **kwargs):
@@ -87,4 +89,16 @@ class ListDetailDeleteView(LoginRequiredMixin, View):
         list_detail = ListDetail.objects.get(pk=data.get('deleteGroup'))
         list_id = list_detail.list.id
         list_detail.delete()
-        return redirect(reverse('list_detail_view', kwargs={'pk': list_id}))
+        return redirect(reverse('list_detail_view', kwargs={'pk': list_id }))
+
+
+class ListDetailUnSubscribeView(LoginRequiredMixin, RedirectView):
+    permanent = False
+    MESSAGE_SUCCESS = 'Se desuscribio de la lista'
+
+    def get_redirect_url(self, pk):
+        list_detail = ListDetail.objects.get(pk=pk)
+        list_detail.status= ListDetail.STATUS_INACTIVE
+        list_detail.save()
+        messages.success(self.request, self.MESSAGE_SUCCESS)
+        return reverse('list_detail_view', kwargs={'pk': list_detail.list_id })

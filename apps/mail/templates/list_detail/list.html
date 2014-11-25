@@ -37,6 +37,7 @@
                 <td>
                     <a class="btn btn-info" href="{% url "list_detail_update_view" list_detail.pk %}">Editar</a> |
                     <a class="btn btn-danger deletePermission" data-toggle="modal" data-target="#modalDelete" data-id="{{ list_detail.id }}">Eliminar</a> |
+                    <a class="btn btn-warning" href="{% url "list_detail_un_subscribe_view" list_detail.pk %}" >Desuscribir</a>
                 </td>
             </tr>
         {% endfor %}

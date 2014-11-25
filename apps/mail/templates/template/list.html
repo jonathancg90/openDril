@@ -23,7 +23,6 @@
         <thead>
         <tr>
             <th>Nombre</th>
-            <th>Tipo</th>
             <th>Opciones</th>
         </tr>
         </thead>
@@ -31,7 +30,6 @@
         {% for template in object_list %}
             <tr>
                 <td>{{ template.name }}</td>
-                <td>{{ template.get_type_display }}</td>
                 <td>
                     <a class="btn btn-primary" href="{% url "template_update_view" template.pk %}">Editar</a> |
                     <a class="btn btn-danger deletePermission" data-toggle="modal" data-target="#modalDelete" data-id="{{ template.id }}">Eliminar</a> |

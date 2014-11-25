@@ -1,6 +1,10 @@
 from django.conf.urls import patterns, include, url
 
-from apps.mail.views.dashboard import HomeTemplate, dashboardTemplate, LoginUserView, LogoutView
+from apps.mail.views.dashboard import HomeTemplate
+from apps.mail.views.dashboard import dashboardTemplate
+from apps.mail.views.dashboard import LoginUserView
+from apps.mail.views.dashboard import LogoutView
+from apps.mail.views.dashboard import UnSubscribeView
 
 urlpatterns = patterns('',
                        url(r'^$',
@@ -10,6 +14,10 @@ urlpatterns = patterns('',
                        url(r'^dashboard/$',
                            dashboardTemplate.as_view(),
                            name='dashboard_view'),
+
+                       url(r'^unsubscribe/(?P<pk>\d+)/$',
+                           UnSubscribeView.as_view(),
+                           name='un_subscribe_view'),
 
                        url(r'^login/$',
                            LoginUserView.as_view(),

@@ -3,7 +3,7 @@ import mandrill
 from datetime import timedelta
 from django.conf import settings
 
-from celery.task import Task
+from django.core.urlresolvers import reverse
 from celery.task import PeriodicTask
 
 from apps.mail.models.Campaign import Campaign
@@ -30,15 +30,21 @@ class SendMessagesMandrill(PeriodicTask):
                 message = {
                     'from_email': campaign_detail.email_sender,
                     'from_name': campaign_detail.name_sender,
-                    'merge_vars': [{
-                                       'rcpt': campaign_detail.email,
-                                       'vars': [
-                                           {
-                                               'content': campaign_detail.name,
-                                               'name': 'name'
-                                           }
-                                       ]
-                                   }],
+                    'merge_vars': [
+                        {
+                            'rcpt': campaign_detail.email,
+                            'vars': [
+                                {
+                                    'content': campaign_detail.name,
+                                    'name': 'name'
+                                },
+                                {
+                                    'content': reverse('un_subscribe_view', kwargs={'pk': campaign_detail.list_detail_id }),
+                                    'name': 'unsubscribe'
+                                }
+                            ]
+                        },
+                    ],
                     'merge': True,
                     'html':  campaign_detail.content,
                     'subject': campaign.subject,

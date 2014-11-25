@@ -31,6 +31,16 @@ class Command(BaseCommand):
     def insert_csv(self):
         # List.objects.all().delete()
         # Category.objects.all().delete()
+        def get_quality(quality):
+            if quality == 'A+':
+                return ListDetail.QUALITY_EXCELLENT
+            return ListDetail.QUALITY_REGULAR
+        try:
+            list_bago =List.objects.filter(name='Bago')
+            list_bago.status=List.STATUS_INACTIVE
+            list_bago.save()
+        except:
+            pass
 
         _list = List()
         _list.name = 'Bago'
@@ -39,11 +49,14 @@ class Command(BaseCommand):
         _list.save()
 
         ROOT_PATH = settings.ROOT_PATH
-        file_path = ROOT_PATH + '/apps/mail/management/dbdata/export.csv'
+        file_path = ROOT_PATH + '/apps/mail/management/dbdata/ultimo.csv'
         dataReader = csv.reader(open(file_path), delimiter=',', quotechar='"')
 
         for row in dataReader:
-            category_name = row[1]
+            quality = row[1]
+            quality = get_quality(quality)
+
+            category_name = row[2]
             categories = Category.objects.filter(name=category_name)
             if categories.exists():
                 category = categories.first()
@@ -56,6 +69,7 @@ class Command(BaseCommand):
             list_detail = ListDetail()
             list_detail.list = _list
             list_detail.email = row[0]
+            list_detail.quality = quality
             list_detail.name = row[0].split('@')[0]
             list_detail.category = category
             list_detail.save()

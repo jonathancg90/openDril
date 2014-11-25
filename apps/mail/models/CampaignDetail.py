@@ -61,6 +61,12 @@ class CampaignDetail(models.Model):
         default=STATUS_SENT
     )
 
+    list_detail = models.ForeignKey(
+        'ListDetail',
+        verbose_name='Detalle de lista',
+        related_name='campaign_detail_set',
+    )
+
     created = models.DateTimeField(
         auto_now_add=True,
         editable=False

@@ -9,7 +9,6 @@ from django.views.generic import RedirectView
 
 from apps.mail.tasks.save_messages import SaveMessagesMandrill
 from apps.mail.views.commons.view import LoginRequiredMixin
-from apps.mail.models.CampaignDetail import CampaignDetail
 from apps.mail.models.Campaign import Campaign
 
 

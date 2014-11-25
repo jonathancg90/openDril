@@ -9,6 +9,7 @@ from django.contrib import auth
 
 from apps.mail.views.commons.view import LoginRequiredMixin
 from apps.mail.views.commons.view import JSONResponseMixin
+from apps.mail.models.ListDetail import ListDetail
 
 
 class dashboardTemplate(LoginRequiredMixin, TemplateView):
@@ -55,3 +56,13 @@ class LogoutView(RedirectView):
 
     def get_redirect_url(self, **kwargs):
         return reverse('home_view')
+
+
+class UnSubscribeView(LoginRequiredMixin, TemplateView):
+    template_name = 'unsubscribe.html'
+
+    def get(self, request, *args, **kwargs):
+        list_detail = ListDetail.objects.get(pk=self.kwargs.get('pk'))
+        list_detail.status= ListDetail.STATUS_INACTIVE
+        list_detail.save()
+        return super(UnSubscribeView, self).get(request, *args, **kwargs)

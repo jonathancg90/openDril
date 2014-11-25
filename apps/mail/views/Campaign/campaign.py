@@ -20,6 +20,7 @@ from apps.mail.forms.Campaign import CampaignCreateForm
 from apps.mail.models.Campaign import Campaign, CampaignFilterDetail
 from apps.mail.models.List import List
 from apps.mail.models.Category import Category
+from apps.mail.models.ListDetail import ListDetail
 from apps.mail.views.commons.view import JSONResponseMixin
 
 
@@ -97,10 +98,14 @@ class CampaignDetailListView(LoginRequiredMixin, TemplateView):
         data = []
         for campaign_detail_filter in self.campaign.campaign_filter_detail_set.all():
             if campaign_detail_filter.category is None:
-                list_details = campaign_detail_filter.list.list_detail_set.all()
+                list_details = campaign_detail_filter.list.list_detail_set.filter(
+                    status=ListDetail.STATUS_ACTIVE
+                )
             else:
-                list_details = campaign_detail_filter.list.list_detail_set.filter(category=campaign_detail_filter.category)
-
+                list_details = campaign_detail_filter.list.list_detail_set.filter(
+                    category=campaign_detail_filter.category,
+                    status=ListDetail.STATUS_ACTIVE
+                )
             for detail_list in list_details:
                 data.append({
                     'email': detail_list.email,
