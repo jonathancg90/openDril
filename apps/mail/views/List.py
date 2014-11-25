@@ -21,7 +21,7 @@ class ListTemplateView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         qs = super(ListTemplateView, self).get_queryset()
-        qs= qs.filter(status=List.STATUS_ACTIVE)
+        qs = qs.filter(status=List.STATUS_ACTIVE)
         return qs
 
 

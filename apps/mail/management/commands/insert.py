@@ -36,7 +36,7 @@ class Command(BaseCommand):
                 return ListDetail.QUALITY_EXCELLENT
             return ListDetail.QUALITY_REGULAR
         try:
-            list_bago =List.objects.filter(name='Bago')
+            list_bago = List.objects.filter(name='Bago').first()
             list_bago.status=List.STATUS_INACTIVE
             list_bago.save()
         except:
@@ -57,7 +57,10 @@ class Command(BaseCommand):
             quality = get_quality(quality)
 
             category_name = row[2]
-            categories = Category.objects.filter(name=category_name)
+            categories = Category.objects.filter(
+                name=category_name,
+                list=_list
+            )
             if categories.exists():
                 category = categories.first()
             else:
