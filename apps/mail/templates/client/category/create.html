@@ -1,0 +1,24 @@
+{% extends 'client/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block styles %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1 class="header-title">Nueva categoria</h1>
+    </div>
+    <form method="post" action="" class="form-horizontal">
+        {% csrf_token %}
+
+        {% crispy form %}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" class="btn btn-success" value="Crear" />
+                <a class="btn btn-primary" href="{% url "category_list_view" %}">Cancelar</a>
+            </div>
+        </div>
+
+    </form>
+{% endblock content %}

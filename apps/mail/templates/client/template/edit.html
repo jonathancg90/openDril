@@ -1,0 +1,40 @@
+{% extends 'client/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block styles %}
+
+    <link href="{{ STATIC_URL }}css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}css/froala_editor.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}css/froala_style.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1 class="header-title">Editar plantilla &raquo {{ template.name }}</h1>
+    </div>
+    <form method="post" action="" class="form-horizontal">
+        {% csrf_token %}
+
+        {% crispy form %}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" class="btn btn-success" value="Actualizar" />
+                <a class="btn btn-primary" href="{% url "template_list_view" %}">Cancelar</a>
+            </div>
+        </div>
+
+    </form>
+{% endblock content %}
+
+{% block script_bottom %}
+
+    <script src="{{ STATIC_URL }}js/froala_editor.min.js"></script>
+    <script>
+        $(document).on('ready', function(){
+            $('#id_content').editable({
+                inlineMode: false
+            });
+        });
+    </script>
+
+{% endblock script_bottom %}

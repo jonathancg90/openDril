@@ -1,0 +1,27 @@
+{% load crispy_forms_tags %}
+<html>
+<head>
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+</head>
+    <body>
+        <div class="container">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    <a class="close" data-dismiss="alert" href="#">×</a>
+                    <p>{% autoescape off %}{{ message }}{% endautoescape %}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <section class="container">
+            <form method="post" action="" class="form-horizontal">
+                {% crispy form %}
+
+                <div class="form-actions">
+                    <input type="submit" class="btn btn-primary" value="Sign up" />
+                    or<a class="btn" href="{% url 'login_template_view' %}">Cancel</a>
+                </div>
+
+            </form>
+        </section>
+    </body>
+</html>

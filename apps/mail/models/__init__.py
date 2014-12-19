@@ -4,6 +4,8 @@ from apps.mail.models.ListDetail import ListDetail
 from apps.mail.models.Template import Template
 from apps.mail.models.Campaign import Campaign, CampaignFilterDetail
 from apps.mail.models.Category import Category
+from apps.mail.models.UserProfile import UserProfile
+from apps.mail.models.Business import Business
 
 
 __all__ = [
@@ -14,4 +16,6 @@ __all__ = [
     'ListDetail',
     'List',
     'Campaign',
+    'Business'
+    'UserProfile'
 ]

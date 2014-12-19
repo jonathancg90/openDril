@@ -4,6 +4,11 @@ from django.db import models
 
 class Template(models.Model):
 
+    business = models.ForeignKey(
+        'Business',
+        related_name='template_set',
+        null=True
+    )
 
     name = models.CharField(
         max_length=45,

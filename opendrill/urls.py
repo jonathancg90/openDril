@@ -4,6 +4,14 @@ from django.conf import settings
 
 urlpatterns = patterns('',
 
+
+    #Client
+    url(r'^client/', include('apps.mail.urls.client')),
+
+    #Admin
+    url(r'^admin/', include('apps.mail.urls.admin')),
+
+    #Website
     url(r'^', include('apps.mail.urls')),
 )
 urlpatterns += staticfiles_urlpatterns()

@@ -15,6 +15,11 @@ class Campaign(models.Model):
         (STATUS_ACTIVE,'activo') #Campaña creada peros oin enviar
     )
 
+    business = models.ForeignKey(
+        'Business',
+        related_name='campaign_set',
+    )
+
     name = models.CharField(
         max_length=45,
         verbose_name='Titulo',

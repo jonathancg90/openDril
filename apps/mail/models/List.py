@@ -12,6 +12,11 @@ class List(models.Model):
         (STATUS_ACTIVE,'activo')
     )
 
+    business = models.ForeignKey(
+        'Business',
+        related_name='list_set',
+    )
+
     name = models.CharField(
         max_length=45,
         verbose_name='Nombre de la lista',

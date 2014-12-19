@@ -52,28 +52,28 @@ WSGI_APPLICATION = 'opendrill.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 #Server
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'opendrill',
-        'USER': 'open',
-        'PASSWORD': 'Nexonet2014$',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
-    }
-}
-
-#Local
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'opendrill',
-#         'USER': 'root',
-#         'PASSWORD': 'root',
+#         'USER': 'open',
+#         'PASSWORD': 'Nexonet2014$',
 #         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
 #         'PORT': '',                      # Set to empty string for default.
 #     }
 # }
+
+#Local
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'opendrill',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '',                      # Set to empty string for default.
+    }
+}
 
 
 # Internationalization
@@ -102,7 +102,7 @@ STATICFILES_DIRS = (
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-MANDRILL_API_KEY = "PJInNsWGJMsrdyzcbdLtJA"
+MANDRILL_API_KEY = "gSF1tAft1NH553g6Gcx8QA"
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 
 STATICFILES_FINDERS = (

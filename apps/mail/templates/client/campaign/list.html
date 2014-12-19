@@ -1,0 +1,180 @@
+{% extends 'client/base.html' %}
+{% block styles %}
+    <style>
+        .button-header {
+            float: right;
+        }
+        .header-title {
+            width: 50%;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div ng-app="campaignApp" ng-controller="campaignCtrl">
+    <div class="page-header">
+        <div class="tools">
+            <a href="{% url "campaign_create_view" %}" class="btn btn-success button-header">
+                <i class="icon-plus icon-white"></i>Nueva campaña</a>
+        </div>
+        <h1 class="header-title">Campañas</h1>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Asunto</th>
+            <th>Listas</th>
+            <th>Plantilla</th>
+            <th>Opciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for campaign in object_list %}
+            <tr>
+                <td>{{ campaign.name }}</td>
+                <td>{{ campaign.subject }}</td>
+                <td>
+                     <a href="#" data-toggle="modal" ng-click="getDetailFilter({{ campaign.id }})"  data-target="#modalFilter" >{{ campaign.get_lists }}</a>
+                </td>
+                <td>{{ campaign.template.name }}</td>
+{#                <td>{{ campaign.created|date:"d/m/Y" }}</td>#}
+                <td>
+                    <a class="btn btn-info" href="{% url "campaign_detail_list_view" campaign.pk %}">Detalles</a> |
+                    {% if campaign.status != 2 and campaign.status != 3  %}
+                        <a class="btn btn-primary" href="{% url "campaign_update_view" campaign.pk %}">Editar</a> |
+                    {% endif %}
+                    <a class="btn btn-danger deletePermission" data-toggle="modal" data-target="#modalDelete" data-id="{{ campaign.id }}">Eliminar</a> |
+                    {% if campaign.status != 2 and campaign.status != 3 %}
+                        <a class="btn btn-success" href="{% url "send_messages_view" campaign.pk %}">Enviar</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Eliminar Campaña</h4>
+                </div>
+                <div class="modal-body">
+                    Estas seguro de eliminar esta campaña ?
+                </div>
+                <div class="modal-footer">
+                    <form method="post" action="{% url "campaign_delete_view" %}">
+                        <input type="hidden" id="deleteGroup" name="deleteGroup"/>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Detail -->
+    <div class="modal fade" id="modalFilter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Listas de envio</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <select class="form-control" ng-model="newList" ng-change="getCategories()" ng-options="list.list_name for list in lists">
+                                <option value="">Seleccione una lista</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" ng-model="newCategory" ng-options="category.category_name for category in categories">
+                                <option value="">Seleccione una categoria</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" ng-click="addDetail()">Agregar</button>
+                    </form>
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Lista</th>
+                            <th>Categoria</th>
+                            <th>Opciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="detail in detail_filter">
+                                <td>{[{ detail.list }]}</td>
+                                <td>{[{ detail.category }]}</td>
+                                <td><a href="#" ng-click="deleteDetail($index,detail.detail_id)">Eliminar</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <form method="post" action="{% url "campaign_delete_view" %}">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+{% endblock content %}
+
+{% block script_bottom %}
+    <script src="{{ STATIC_URL }}js/apps/commons/request.js"></script>
+    <script src="{{ STATIC_URL }}js/apps/campaign/app.js"></script>
+    <script src="{{ STATIC_URL }}js/apps/campaign/controller.js"></script>
+
+    <script>
+        $(document).on('ready', function(){
+            $('.deletePermission').on('click', function(){
+                var groupId = $(this).data('id');
+                $('#deleteGroup').val(groupId);
+            })
+        });
+
+        $('#modalFilter').on('hidden.bs.modal', function (e) {
+            location.reload();
+        })
+
+        angular.module('campaignApp').value("factoryUrl", {
+            campaignFilterListDetail: '{% url "campaign_filter_view" campaign='campaign_pk'  %}',
+            saveCampaignListDetail: '{% url "campaign_filter_create_view" %}',
+            deleteCampaignListDetail: '{% url "campaign_filter_delete_view" %}'
+        });
+
+        angular.module('campaignApp').value("contextData", {
+            lists: JSON.stringify({{ list|safe }})
+        });
+
+    </script>
+{% endblock %}

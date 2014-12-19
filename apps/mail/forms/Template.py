@@ -2,6 +2,7 @@ from django.forms import ModelForm
 from crispy_forms.helper import FormHelper
 
 from apps.mail.models.Template import Template
+from apps.mail.models.Business import Business
 
 
 class TemplateCreateForm(ModelForm):
@@ -14,6 +15,10 @@ class TemplateCreateForm(ModelForm):
         self.helper.label_class = 'col-lg-2'
         self.helper.field_class = 'col-lg-8'
         super(TemplateCreateForm, self).__init__(*args, **kwargs)
+
+    def set_business(self, business):
+        self.fields['business'].choices = [(business.id, business.name)] + list(Business.objects.exclude(
+            pk=business.id).values_list('id', 'name'))
 
     class Meta:
         exclude = ['status']

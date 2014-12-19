@@ -1,0 +1,14 @@
+{% extends 'client/base.html' %}
+
+{% block content %}
+    <h1>Panel de control</h1>
+
+    <ul>
+        <li>Cuota diaria: {{ information.hourly_quota }}</li>
+        <li>Reputacion: {{ information.reputation }}</li>
+        <li>Backlog: {{ information.backlog }}</li>
+    </ul>
+
+    <button type="button" class="btn btn-primary">Crear campaña</button>
+
+{% endblock content %}
